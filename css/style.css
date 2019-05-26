@@ -1,0 +1,175 @@
+html {
+  height: 100%;
+ }
+ 
+ body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgb(194, 194, 194) linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
+  font-family: ‘Nunito’, sans-serif;
+  background-attachment: fixed;
+ }
+
+/* begin title animation */
+.color {
+  color: white;
+}
+
+.dev {
+  font-size: 80px;
+}
+#container {
+  margin-top: 50px auto;
+  text-align: center;
+}
+div p {
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 72px;
+  color: #ffe400;
+  position: relative;
+  margin: 0 auto;
+  opacity: 0.0;
+  animation: port 1.8s 1 forwards;
+}
+
+.pop {
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 72px;
+  color: white;
+  position: relative;
+  margin: 0 auto;
+  opacity: 0.0;
+  animation: port .05s 1 forwards;
+}
+
+div p:nth-of-type(2){
+  animation-delay: 0.1s;
+}
+
+div p:nth-of-type(3){
+  animation-delay: 0.2s;
+}
+
+div p:nth-of-type(4){
+  animation-delay: 0.3s;
+}
+
+div p:nth-of-type(5){
+  animation-delay: 0.4s;
+}
+
+div .pop:nth-of-type(6){
+  animation-delay: 1.7s;
+}
+
+div .pop:nth-of-type(7){
+  animation-delay: 1.7s;
+}
+
+div .pop:nth-of-type(8){
+  animation-delay: 1.7s;
+}
+
+div .pop:nth-of-type(9){
+  animation-delay: 1.7s;
+}
+
+@keyframes port {
+  0%{
+    transform: rotateY(90deg) translateY(25%);
+    opacity: 0.0;
+  }
+  100%{
+    transform: rotateY(0deg) translateY(0%);
+    opacity: 1.0;
+  }
+}
+/* end title animation */
+
+section {
+  padding: 220px 0;
+  width: 30%;
+  margin: auto;
+  position: relative;
+}
+
+form {
+  text-align: center;
+  color: white;
+  padding: 0px;
+}
+
+input{
+  width: 46%;
+  padding: 12px 5px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: gray;
+  border-radius: 6px;
+  color: white;
+}
+
+#welcome {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding-top: 40px;
+}
+
+#fText {
+  font-size: 18px;
+  padding-bottom: 0px;
+  color: lightgray;
+}
+
+/* button hover animation */
+
+/* #button {
+  margin: 0px 15px 0px 15px;
+} */
+
+button {
+  border-radius: 10px;
+  background-color: #ffe600e5;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px auto;
+}
+
+button a {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 1.0s;
+  text-decoration: none;
+  color: white;
+}
+
+button a:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 1.0s;
+}
+
+button:hover a {
+  padding-right: 25px;
+}
+
+button:hover a:after {
+  opacity: 1;
+  right: 0;
+}
+/* end button animation */
