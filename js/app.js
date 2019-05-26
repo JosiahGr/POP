@@ -50,22 +50,13 @@ var leftCells = [];
 
 var clickCell = 0;
 
-var sounds = []; 
+var sounds = [];
 
 var audio = new Audio('../media/pop.mp3');
 sounds.push(audio);
-var audioLost = new Audio('../media/gandalf_shallnotpass.wav');
-sounds.push(audioLost);
 
-var audioWin = new Audio('../media/austin_yeahbaby.wav');
-sounds.push(audioWin);
-var audioWin2 = new Audio('../media/darthvader_taughtyouwell.wav');
-sounds.push(audioWin2);
-var audioWin3 = new Audio('../media/austin_groovy.wav');
-sounds.push(audioWin3);
-var audioWin4 = new Audio('../media/woohoo.wav');
-sounds.push(audioWin4);
-var mute = document.getElementById('mute');
+// var audioWin = new Audio('../media/austin_yeahbaby.wav');
+// sounds.push(audioWin);
 
 function soundOff(){
   for(var i in sounds){
@@ -161,7 +152,7 @@ function clear() {
   if(clearedCells.length === gameNumbers.length){
     var gameWin = document.getElementById('results');
     var winMsg = document.createElement('p');
-    winMsg.textContent = ('You win! Next Level');
+    winMsg.textContent = ('Nice Job');
     gameWin.appendChild(winMsg);
     lastGamePlayed += 1;
     gameScore += clicksRemaining * 100;
@@ -169,7 +160,7 @@ function clear() {
     clearedCells = [];
     localStorage.lastGame = JSON.stringify(lastGamePlayed);
     localStorage.currentScore = JSON.stringify(gameScore);
-    audioWin.play();
+    // audioWin.play();
     setTimeout('startGame()', 2500);
     console.log('win');
   }
@@ -185,11 +176,11 @@ function check() {
     gameMsg.appendChild(lostMsg);
     scores.setAttribute('id', 'highScores');
     replayLevel.setAttribute('id', 'replayLevel');
-    audioLost.play();
+    // audioLost.play();
     console.log('lose');
   }
 }
-  
+
 function blowEmUp () {
   for(var i in gameNumbers){
     if(gameNumbers[i] > burstNumber){
@@ -216,7 +207,7 @@ function loserOptions(event){
   }
 }
 
-function updateNeighbors() { 
+function updateNeighbors() {
 
   //code for 1st cell
   if(clickCell === 0){
