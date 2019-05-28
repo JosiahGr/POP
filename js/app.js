@@ -139,7 +139,9 @@ function edgeCells() {
 
 function updateNumbers(event){
   clickCell = parseInt(event.target.id);
-  clickTracker();
+  if (clickCell) {
+    clickTracker();
+  }
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
 }
