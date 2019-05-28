@@ -1,6 +1,7 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
+var mute = document.getElementById('mute');
 var clicksLeft = document.getElementById('clicksRemaining');
 var clickCounter = document.createElement('ul');
 clicksLeft.appendChild(clickCounter);
@@ -55,13 +56,16 @@ var sounds = [];
 var audio = new Audio('../media/pop.mp3');
 sounds.push(audio);
 
-// var audioWin = new Audio('../media/austin_yeahbaby.wav');
-// sounds.push(audioWin);
-
 function soundOff(){
   for(var i in sounds){
-    sounds[i].muted = true;
-    localStorage.sounds = JSON.stringify(true);
+    if (sounds[i].muted === false) {
+      sounds[i].muted = true;
+      localStorage.sounds = JSON.stringify(true);
+      document.getElementById('mute').style.color = 'lightGray';
+    } else {
+      sounds[i].muted = false;
+      document.getElementById('mute').style.color = 'white';
+    }
   }
 }
 function randomNumber() {

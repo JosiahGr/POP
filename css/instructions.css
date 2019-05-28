@@ -38,7 +38,7 @@ li {
 
 }
 
-#wtf {
+#spacing {
   background: rgba(0, 0, 0, .5);
   max-width: 70%;
   margin: auto;
@@ -61,7 +61,7 @@ button {
   margin: 0px auto;
 }
 
-#fuck {
+#textFix {
   width: 100%;
   text-align: center;
 }
