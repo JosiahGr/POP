@@ -64,11 +64,11 @@ function yourScore() {
 if(localStorage.previousHighScores){
   High.users = JSON.parse(localStorage.getItem('previousHighScores'));
 } else {
-  new High('SRJJ', 9, 15000);
-  new High('Joe', 8, 13000);
-  new High('Becky',7, 11000);
-  new High('Steph', 6, 9000);
-  new High('Jim', 5, 7000);
+  new High('Jackie', 9, 20000);
+  new High('Joe', 8, 18000);
+  new High('Becky',7, 17000);
+  new High('Steph', 6, 12000);
+  new High('Jim', 5, 9000);
 }
 
 var userName = localStorage.firstName;
@@ -77,13 +77,27 @@ var userScore = JSON.parse(localStorage.getItem('currentScore'));
 
 function checkScores() {
   if(userScore >= High.users[0].scored) {
-    High.users[0].userName = 'HAHAHAHAHA!!!!';
-    High.users[0].level = (userLevel += 1);
-    High.users[0].scored = (userScore += 1);
-    userLevel = userLevel -= 1;
-    userScore = userScore -= 1;
+    High.users[4].userName = High.users[3].userName;
+    High.users[4].level = High.users[3].level;
+    High.users[4].scored = High.users[3].scored;
+
+    High.users[3].userName = High.users[2].userName;
+    High.users[3].level = High.users[2].level;
+    High.users[3].scored = High.users[2].scored;
+
+    High.users[2].userName = High.users[1].userName;
+    High.users[2].level = High.users[1].level;
+    High.users[2].scored = High.users[1].scored;
+
+    High.users[1].userName = High.users[0].userName;
+    High.users[1].level = High.users[0].level;
+    High.users[1].scored = High.users[0].scored;
+
+    High.users[0].userName = userName;
+    High.users[0].level = userLevel;
+    High.users[0].scored = userScore;
   }
-  if(userScore >= High.users[1].scored && userScore <= High.users[0].scored) {
+  if(userScore >= High.users[0].scored && userScore <= High.users[0].scored) {
     High.users[4].userName = High.users[3].userName;
     High.users[4].level = High.users[3].level;
     High.users[4].scored = High.users[3].scored;

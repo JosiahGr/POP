@@ -96,8 +96,6 @@ function makeGameTable(){
       } else if(cellValue === 4) {
         button.style.background = 'red';
         button.style.border = 'red';
-
-  
       }
       tableTotal = tableTotal + cellValue;
       gameNumbers.push(cellValue);
@@ -149,16 +147,12 @@ function edgeCells() {
 
 function updateNumbers(event){
   clickCell = parseInt(event.target.id);
-  if (clickCell) {
-    clickTracker();
+  if (clickCell || event.target.id === '0') {
+    clicksRemaining = clicksRemaining - 1;
+    clickCounter.textContent = clicksRemaining;
   }
   gameNumbers[clickCell] = gameNumbers[clickCell] + 1;
   clearAndCheck();
-}
-
-function clickTracker(){
-  clicksRemaining = clicksRemaining - 1;
-  clickCounter.textContent = clicksRemaining;
 }
 
 function clearAndCheck(){
@@ -169,9 +163,11 @@ function clearAndCheck(){
 
 function clear() {
   if(clearedCells.length === gameNumbers.length){
+    var winTxt = ['Great!', 'Nice Job!', 'You Rock!', 'Winning.', 'Crushed It!', 'Victory!', 'Masterful!', 'You Got Skillz!', 'Congratulations!', 'You are a winner.', 'Like a Boss.'];
     var gameWin = document.getElementById('results');
     var winMsg = document.createElement('p');
-    winMsg.textContent = ('Nice Job');
+    var index = Math.floor(Math.random() * 12);
+    winMsg.textContent = winTxt[index];
     gameWin.appendChild(winMsg);
     lastGamePlayed += 1;
     gameScore += clicksRemaining * 100;
@@ -346,7 +342,7 @@ function winnerWinnerChickenDinner(){
 function gameOne() {
   gameSize = 3;
   topIndex = gameSize - 1;
-  clicksRemaining = 8;
+  clicksRemaining = 10;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   pop.textContent = burstNumber;
@@ -359,7 +355,7 @@ function gameOne() {
 function gameTwo() {
   gameSize = 4;
   topIndex = gameSize - 1;
-  clicksRemaining = 14;
+  clicksRemaining = 12;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   pop.textContent = burstNumber;
@@ -372,7 +368,7 @@ function gameTwo() {
 function gameThree() {
   gameSize = 5;
   topIndex = gameSize - 1;
-  clicksRemaining = 20;
+  clicksRemaining = 15;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
   pop.textContent = burstNumber;
@@ -455,7 +451,7 @@ function gameNine() {
   burstNumber = 4;
   pop.textContent = burstNumber;
   maxTableTotal = 64;
-  minTableTotal = 30;
+  minTableTotal = 60;
   makeGameTable();
   lastGamePlayed = 8;
   levelUp.textContent = 9;
