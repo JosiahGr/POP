@@ -1,6 +1,7 @@
 'use strict';
 
 var game = document.getElementById('gameTable');
+var mute = document.getElementById('mute');
 var clicksLeft = document.getElementById('clicksRemaining');
 var clickCounter = document.createElement('ul');
 clicksLeft.appendChild(clickCounter);
@@ -32,6 +33,7 @@ var gameSize = 3;
 var topIndex = 2;
 var tableTotal = 0;
 var maxTableTotal;
+var minTableTotal;
 var gameNumbers = [];
 var gameIndex = 0;
 var cellNumber = -1;
@@ -55,13 +57,16 @@ var sounds = [];
 var audio = new Audio('../media/pop.mp3');
 sounds.push(audio);
 
-// var audioWin = new Audio('../media/austin_yeahbaby.wav');
-// sounds.push(audioWin);
-
 function soundOff(){
   for(var i in sounds){
-    sounds[i].muted = true;
-    localStorage.sounds = JSON.stringify(true);
+    if (sounds[i].muted === false) {
+      sounds[i].muted = true;
+      localStorage.sounds = JSON.stringify(true);
+      document.getElementById('mute').style.color = 'lightGray';
+    } else {
+      sounds[i].muted = false;
+      document.getElementById('mute').style.color = 'white';
+    }
   }
 }
 function randomNumber() {
@@ -79,7 +84,7 @@ function makeGameTable(){
       tdEl.appendChild(button);
       trEl.appendChild(tdEl);
       var cellValue = randomNumber();
-      if(cellValue === 1 || cellValue === 0) {
+      if(cellValue === 1) {
         button.style.bakground = 'white';
         button.style.border = 'white';
       } else if(cellValue === 2) {
@@ -91,6 +96,8 @@ function makeGameTable(){
       } else if(cellValue === 4) {
         button.style.background = 'red';
         button.style.border = 'red';
+
+  
       }
       tableTotal = tableTotal + cellValue;
       gameNumbers.push(cellValue);
@@ -100,6 +107,9 @@ function makeGameTable(){
   edgeCells();
   gameIndex = parseInt(gameNumbers.length) - 1;
   if(tableTotal > (maxTableTotal)){
+    location.reload();
+  }
+  if(tableTotal < (minTableTotal)){
     location.reload();
   }
 }
@@ -218,7 +228,7 @@ function loserOptions(event){
   if(event.target.id === 'highScores'){
     localStorage.lastGame = JSON.stringify(lastGamePlayed);
     localStorage.currentScore = JSON.stringify(gameScore);
-    window.location.href = 'scores.html';
+    window.location.href = 'score.html';
   }else{
     startGame();
   }
@@ -339,8 +349,9 @@ function gameOne() {
   clicksRemaining = 8;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
-  pop.textContent = burstNumber + 1;
+  pop.textContent = burstNumber;
   maxTableTotal = 18;
+  minTableTotal = 9;
   makeGameTable();
   lastGamePlayed = 0;
   levelUp.textContent = 1;
@@ -351,8 +362,9 @@ function gameTwo() {
   clicksRemaining = 14;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
-  pop.textContent = burstNumber + 1;
+  pop.textContent = burstNumber;
   maxTableTotal = 32;
+  minTableTotal = 16;
   makeGameTable();
   lastGamePlayed = 1;
   levelUp.textContent = 2;
@@ -363,8 +375,9 @@ function gameThree() {
   clicksRemaining = 20;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
-  pop.textContent = burstNumber + 1;
-  maxTableTotal = 50;
+  pop.textContent = burstNumber;
+  maxTableTotal = 60;
+  minTableTotal = 30;
   makeGameTable();
   lastGamePlayed = 2;
   levelUp.textContent = 3;
@@ -375,8 +388,9 @@ function gameFour() {
   clicksRemaining = 6;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
-  pop.textContent = burstNumber + 1;
+  pop.textContent = burstNumber;
   maxTableTotal = 18;
+  minTableTotal = 9;
   makeGameTable();
   lastGamePlayed = 3;
   levelUp.textContent = 4;
@@ -387,8 +401,9 @@ function gameFive() {
   clicksRemaining = 13;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
-  pop.textContent = burstNumber + 1;
+  pop.textContent = burstNumber;
   maxTableTotal = 32;
+  minTableTotal = 16;
   makeGameTable();
   lastGamePlayed = 4;
   levelUp.textContent = 5;
@@ -399,8 +414,9 @@ function gameSix() {
   clicksRemaining = 18;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 3;
-  pop.textContent = burstNumber + 1;
+  pop.textContent = burstNumber;
   maxTableTotal = 50;
+  minTableTotal = 25;
   makeGameTable();
   lastGamePlayed = 5;
   levelUp.textContent = 6;
@@ -413,6 +429,7 @@ function gameSeven() {
   burstNumber = 4;
   pop.textContent = burstNumber + 1;
   maxTableTotal = 24;
+  minTableTotal = 12;
   makeGameTable();
   lastGamePlayed = 6;
   levelUp.textContent = 7;
@@ -423,8 +440,9 @@ function gameEight() {
   clicksRemaining = 16;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
-  pop.textContent = burstNumber + 1;
+  pop.textContent = burstNumber;
   maxTableTotal = 44;
+  minTableTotal = 20;
   makeGameTable();
   lastGamePlayed = 7;
   levelUp.textContent = 8;
@@ -432,11 +450,12 @@ function gameEight() {
 function gameNine() {
   gameSize = 5;
   topIndex = gameSize - 1;
-  clicksRemaining = 25;
+  clicksRemaining = 20;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
-  pop.textContent = burstNumber + 1;
+  pop.textContent = burstNumber;
   maxTableTotal = 64;
+  minTableTotal = 30;
   makeGameTable();
   lastGamePlayed = 8;
   levelUp.textContent = 9;
@@ -444,11 +463,12 @@ function gameNine() {
 function gameForever() {
   gameSize = 5;
   topIndex = gameSize - 1;
-  clicksRemaining = 25;
+  clicksRemaining = 20;
   clickCounter.textContent = clicksRemaining;
   burstNumber = 4;
-  pop.textContent = burstNumber + 1;
-  maxTableTotal = 60;
+  pop.textContent = burstNumber;
+  maxTableTotal = 70;
+  minTableTotal = 30;
   makeGameTable();
   levelUp.textContent = lastGamePlayed;
 }

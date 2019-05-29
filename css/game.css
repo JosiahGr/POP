@@ -89,7 +89,7 @@ ul li:first-child {
 
 button {  
   background: white;
-  padding: 48px 48px;
+  padding: 45px 45px;
   border-radius: 500px;
 }
 
@@ -99,7 +99,7 @@ table {
   font-family: Helvetica, Arial, sans-serif;
   border-spacing: 4px;
   border-collapse: separate;
-  margin: 30px auto;
+  margin: 3em auto;
   border-radius: 5px;
 }
 

@@ -32,6 +32,4 @@ function chooseYourDestiny(e) {
 }
 
 button.addEventListener('click', chooseYourDestiny);
-
-setTimeout('audio.play()', 1700);
 pageLoad();
