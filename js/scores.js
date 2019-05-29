@@ -97,7 +97,7 @@ function checkScores() {
     High.users[0].level = userLevel;
     High.users[0].scored = userScore;
   }
-  if(userScore >= High.users[0].scored && userScore <= High.users[0].scored) {
+  if(userScore >= High.users[1].scored && userScore <= High.users[0].scored) {
     High.users[4].userName = High.users[3].userName;
     High.users[4].level = High.users[3].level;
     High.users[4].scored = High.users[3].scored;

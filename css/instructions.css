@@ -6,7 +6,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: rgb(194, 194, 194) linear-gradient(to bottom right, rgb(77, 71, 71), rgb(194, 194, 194));
+  background: rgb(194, 194, 194) linear-gradient(to bottom right, rgb(77, 77, 71), rgb(194, 194, 194));
   font-family: ‘Nunito’, sans-serif;
   background-attachment: fixed;
 }

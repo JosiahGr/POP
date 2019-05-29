@@ -89,7 +89,7 @@ ul li:first-child {
 
 button {  
   background: white;
-  padding: 45px 45px;
+  padding: 48px 48px;
   border-radius: 500px;
 }
 
@@ -243,7 +243,7 @@ a{
    width: 120px;
    font-size: 14px;
    color: white;
-   background-color: #666;
+   background-color: #555;
    text-align: center;
    cursor: default;
    padding: 3px;
